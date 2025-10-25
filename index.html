@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Homes - Bienes Raíces</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.7;
+        }
+
+        .hero {
+            margin-top: 80px;
+            height: 600px;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"><rect fill="%23f5f5f5" width="800" height="600"/><path d="M100 400 L200 300 L300 300 L400 400 Z" fill="%23000" opacity="0.1"/><rect x="220" y="320" width="60" height="80" fill="%23000" opacity="0.1"/><rect x="160" y="340" width="40" height="40" fill="%23000" opacity="0.05"/><rect x="320" y="340" width="40" height="40" fill="%23000" opacity="0.05"/><path d="M500 350 L600 250 L700 250 L700 400 L500 400 Z" fill="%23000" opacity="0.08"/><rect x="540" y="300" width="30" height="50" fill="%23000" opacity="0.1"/><rect x="620" y="300" width="40" height="40" fill="%23000" opacity="0.05"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: 56px;
+            color: #000000;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.8);
+        }
+
+        .hero-content p {
+            font-size: 22px;
+            color: #000000;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+        }
+
+        .cta-button {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 15px 40px;
+            text-decoration: none;
+            font-size: 18px;
+            border: 2px solid #000000;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        .properties {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 42px;
+            margin-bottom: 50px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: #000000;
+        }
+
+        .property-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .property-card {
+            border: 2px solid #000000;
+            padding: 0;
+            transition: transform 0.3s, box-shadow 0.3s;
+            background-color: #ffffff;
+        }
+
+        .property-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .property-image {
+            width: 100%;
+            height: 250px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            color: #000000;
+            border-bottom: 2px solid #000000;
+        }
+
+        .property-info {
+            padding: 25px;
+        }
+
+        .property-info h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .property-info p {
+            color: #333333;
+            margin-bottom: 15px;
+        }
+
+        .property-price {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .property-details {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        footer {
+            background-color: #000000;
+            color: #ffffff;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 80px;
+        }
+
+        .contact-info {
+            max-width: 800px;
+            margin: 0 auto 20px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">ELITE HOMES</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#propiedades">Propiedades</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>Tu Hogar Ideal Te Espera</h1>
+            <p>Encuentra la propiedad perfecta con nosotros</p>
+            <a href="#propiedades" class="cta-button">Ver Propiedades</a>
+        </div>
+    </section>
+
+    <section class="properties" id="propiedades">
+        <h2 class="section-title">Propiedades Destacadas</h2>
+        <div class="property-grid">
+            <div class="property-card">
+                <div class="property-image">🏠</div>
+                <div class="property-info">
+                    <h3>Casa Moderna en Residencial</h3>
+                    <p>Hermosa casa de 2 pisos con acabados de lujo y amplio jardín.</p>
+                    <div class="property-price">$3,500,000</div>
+                    <div class="property-details">
+                        <div class="detail-item">🛏️ 3 Recámaras</div>
+                        <div class="detail-item">🚿 2.5 Baños</div>
+                        <div class="detail-item">📐 250 m²</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="property-card">
+                <div class="property-image">🏢</div>
+                <div class="property-info">
+                    <h3>Departamento Céntrico</h3>
+                    <p>Moderno departamento en zona exclusiva con todas las amenidades.</p>
+                    <div class="property-price">$2,800,000</div>
+                    <div class="property-details">
+                        <div class="detail-item">🛏️ 2 Recámaras</div>
+                        <div class="detail-item">🚿 2 Baños</div>
+                        <div class="detail-item">📐 120 m²</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="property-card">
+                <div class="property-image">🏡</div>
+                <div class="property-info">
+                    <h3>Villa con Alberca</h3>
+                    <p>Espectacular villa con alberca privada y vista panorámica.</p>
+                    <div class="property-price">$5,200,000</div>
+                    <div class="property-details">
+                        <div class="detail-item">🛏️ 4 Recámaras</div>
+                        <div class="detail-item">🚿 3 Baños</div>
+                        <div class="detail-item">📐 380 m²</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contacto">
+        <h3 style="margin-bottom: 20px; font-size: 28px;">Contáctanos</h3>
+        <div class="contact-info">
+            <div>📞 Tel: (555) 123-4567</div>
+            <div>📧 info@elitehomes.com</div>
+            <div>📍 Av. Principal #123, CDMX</div>
+        </div>
+        <p style="margin-top: 30px; opacity: 0.8;">© 2025 Elite Homes. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
